@@ -191,10 +191,7 @@ def classify_action(email, subject):
     try:
         if(re.search(r'^SUBMIT_', subject)):
             title = subject[7 : ]
-            if len(title)<=100:
-                return 201, title
-            else:
-                return 404, " "
+            return 201, title
 
         elif(re.search(r'^CHECK_', subject)):
             id = subject[6 : ]

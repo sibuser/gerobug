@@ -282,7 +282,7 @@ def read_mail():
                                     code = 404
                                     payload[3] = "Details are too short, make sure Title at least < 3, and Summary at least < 10"
                                     
-                                elif (len(report_title) > 100) or (len(atk_type) > 100) or (len(report_endpoint) > 100):
+                                elif (len(report_title) > 140) or (len(report_endpoint) > 140) or (len(atk_type) >= 100):
                                     logging.getLogger("Gerologger").warning('[ERROR 404] Report not valid (Details are too long)')
                                     code = 404
                                     payload[3] = "Details are too long, make sure title, type, and endpoint are less than 100."
