@@ -1,17 +1,19 @@
 # MAIL TEMPLATES FOR GEROBUG
-subject_201 = "Your Bug Report Submission is Received"
+subject_201 = "Report Submission Confirmed: ~ID~"
 message_201 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                Your submission with title "~TITLE~" has been received with Report ID <b>~ID~</b>
-                <br>
-                Please wait for further update, thank you.<br>
+                Hello,<br><br>
 
-                <br><br>
+                We confirm that your report titled "<b>~TITLE~</b>" has been received.<br>
+                This submission has been assigned Report ID: <b>~ID~</b>.<br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                Our security team is currently validating your findings. We will respond once the assessment is complete or if further clarification is required.<br><br>
+
+                We appreciate your assistance in securing our infrastructure.<br><br>
+
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
@@ -20,117 +22,122 @@ subject_202 = "Status of Report ID ~ID~"
 message_202 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                Thank you for your submission<br><br>
+                Hello,<br><br>
 
-                The status of Report ID <b>~ID~</b> (~TITLE~) is <b>~STATUS~</b>
-                <br>
-                Please wait for further update<br>
+                This email provides an update on your bug report.<br><br>
 
-                <br><br>
+                The current status of Report ID <b>~ID~</b> (<b>~TITLE~</b>) is
+                <b>~STATUS~</b>.<br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                We will notify you if there are further updates or if additional
+                information is required.<br><br>
+
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_203 = "Report Update for ~ID~ Received."
+subject_203 = "Confirmation: Update Received for Report ~ID~"
 message_203 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                Your <b>Update</b> on Report ID <b>~ID~</b> (~TITLE~) has been received.
-                <br>
-                Please wait for further update, thank you.<br>
+                Hello,<br><br>
 
-                <br><br>
+                This is a confirmation that your update for Report ID
+                <b>~ID~</b> (<b>~TITLE~</b>) has been successfully received.<br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                Our team will review the update and follow up if additional
+                information is required.<br><br>
+
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_204 = "Appeal Request for ~ID~ Received."
+subject_204 = "Confirmation: Appeal Request Received for Report ~ID~"
 message_204 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                Your <b>Appeal</b> request for Report ID <b>~ID~</b> (~TITLE~) has been received.
-                <br>
-                Please wait for further update, thank you.<br>
+                Hello,<br><br>
 
-                <br><br>
+                This is a confirmation that your appeal request for Report ID
+                <b>~ID~</b> (<b>~TITLE~</b>) has been successfully received.<br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                Our team will review the appeal and notify you if additional
+                information is required or once a decision has been made.<br><br>
+
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_205 = "Agree Submission for ~ID~ Received."
+subject_205 = "Confirmation: Agreement Received for Report ~ID~"
 message_205 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                Thank you for your agreement on our Bounty Calculation<br>
-                Your bounty will be processed immediately.
-                <br>
-                Please wait for further update, thank you.<br>
+                Hello,<br><br>
 
-                <br><br>
+                This is a confirmation that your agreement regarding the bounty
+                calculation for Report ID <b>~ID~</b> has been received.<br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                The bounty processing will proceed according to the program
+                guidelines. You will be notified once there are further updates.<br><br>
+
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_206 = "Bounty Prerequisites for ~ID~ Received."
+subject_206 = "Confirmation: Documents Received for Report ~ID~"
 message_206 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                NDA and Bounty Prerequisites for Report ID <b>~ID~</b> has been received.
+                Hello,<br>
+                We acknowledge receipt of the NDA and bounty prerequisites for Report ID <b>~ID~</b>.
                 <br>
-                Please wait for further update, thank you.<br>
+                Our team will review the documents and notify you regarding the next steps shortly.<br>
 
                 <br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_207 = "Your Current Score"
+subject_207 = "Current Score for This Bug Bounty Program"
 message_207 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                Your current score in our Bug Bounty Program is <b>~NOTE~</b>
+                Hello,<br>
+                This is an update regarding your score in the program.<br>
+                Your accumulated score currently stands at: <b>~NOTE~</b>.
                 <br>
-                You can check the overall rank in our Wall of Fame page.
+                You may verify your ranking by visiting the Hall of Fame page.
                 
                 <br><br>
-                <b>Stay hungry, stay hunting!</b>
+                <b>Good luck with your next hunt.</b>
                 <br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_208 = "Report Status Overview"
+subject_208 = "Submission Summary: Report Overview"
 message_208 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                Currently you have <b>~ID~</b> reports submitted to our system.
+                Hello,<br>
+                We are providing an overview of your report history.<br>
+                You have submitted a total of <b>~ID~</b> reports.
                 <br>
-                Here are the details:
+                The current status of each report is listed below:
                 <br><br>
                 
                 <table border="1">
@@ -144,135 +151,132 @@ message_208 = """\
                 
                 <br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
 # ERROR TEMPLATES FOR GEROBUG
-subject_403 = "This email are not Authorized!"
+subject_403 = "Authorization Failure: Report ~ID~"
 message_403 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                Thank you for your submission<br><br>
+                Hello,<br>
+                We have received your submission.<br><br>
 
-                However, this email address is <b>NOT AUTHORIZED</b><br>
-                to perform the requested action for Report ID: <b>~ID~</b>
+                However, we could not process the request because this email address is not authorized to perform actions for Report ID: <b>~ID~</b>.
                 <br><br>
-                Keep in mind:<br> 
-                1. Use the proper email for the Report ID<br>
-                2. Re-check your submitted Report ID<br>
-                3. Wait for prior instruction before submitting specific request<br>
+                Please verify the following details:<br> 
+                1. Ensure you are sending from the email address associated with this report.<br>
+                2. specific Verify that the Report ID is correct.<br>
+                3. Ensure you have received instructions to submit this specific request.<br>
 
                 <br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_404 = "INVALID REPORT"
+subject_404 = "Submission Error: Invalid Report Format"
 message_404 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                Thank you for your submission<br><br>
+                Hello,<br>
+                We have received your submission.<br><br>
 
-                However, your submission is <b>NOT VALID</b>
+                Regrettably, this report has been marked as <b>Invalid</b> and cannot be processed in its current state.
                 <br>
-                The reason was:<br> 
+                Reason for rejection:<br> 
                 <b>~NOTE~</b>
                 <br>
-                Please re-check your format, make sure you are following the required format as defined <a href="https://gerobug.gitbook.io/documentation/filter-and-validation" target="_blank">here</a><br>
+                Please verify your input and ensure it adheres to the required format as defined <a href="https://gerobug.gitbook.io/documentation/filter-and-validation" target="_blank">in our documentation</a>.<br>
 
                 <br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_405 = "INVALID REPORT ID"
+subject_405 = "Submission Error: Invalid Report ID ~ID~"
 message_405 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                Thank you for your submission<br><br>
+                Hello,<br>
+                We have received your request.<br><br>
 
-                However, your submitted Report ID (<b>~ID~</b>) is <b>NOT VALID</b>
-                <br> 
-                Please re-check your <b>REPORT ID</b>, make sure it is correct.<br>
+                However, we were unable to process it because the submitted Report ID (<b>~ID~</b>) was not found in our system.
+                <br>
+                Please verify the Report ID against your records to ensure it is correct and try again.<br>
 
                 <br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_406 = "This Email is Blacklisted"
+subject_406 = "Submission Blocked: Temporary Restriction"
 message_406 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                This email is <b>BLACKLISTED</b> due to SPAM ACTIVITY<br><br>
+                Hello,<br>
+                Your email address has been temporarily blacklisted due to detected spam activity.<br><br>
 
-                Blacklist period will end in <b>~NOTE~</b> seconds.
+                This restriction will be lifted in <b>~NOTE~</b> seconds.
                 <br> 
-                Try to submit again after the blacklist period ends.<br>
+                Please wait for this period to expire before attempting to submit again.<br>
 
                 <br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
 
 # NOTIFICATION TEMPLATES FOR GEROBUG
-subject_300 = "Notification for Report ID ~ID~"
+subject_300 = "Notification: Status Update for Report ~ID~"
 message_300 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                With this email, we want to notify you that the current status<br>
-                of Report ID <b>~ID~</b> (~TITLE~)<br>
-                is <b>~STATUS~</b>
-                <br>
-                The reason was:<br> 
+                Hello,<br>
+                This email is to notify you of a status change regarding your report.<br>
+                The current status for Report ID <b>~ID~</b> ("~TITLE~") is now: <b>~STATUS~</b>.
+                <br><br>
+                Reason / Additional Notes:<br> 
                 <b>~NOTE~</b>
 
                 <br><br>
-                Thank you for your effort in keeping our system safe.
+                Thank you for your continued efforts in helping secure our systems.
                 <br><br>
                 
-                Best regards,<br>
-                Gerobug Bounty System
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_301 = "Notification for Report ID ~ID~"
+subject_301 = "Notification: Status Update for Report ~ID~"
 message_301 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                With this email, we want to notify you that the current status<br>
-                of Report ID <b>~ID~</b> (~TITLE~)<br>
-                is <b>~STATUS~</b>
+                Hello,<br>
+                We are writing to notify you of a change regarding your submission.<br>
+                The current status of Report ID <b>~ID~</b> (~TITLE~) is now: <b>~STATUS~</b>.
                 <br> 
-                Please wait for further update<br>
+                Please await further updates as we continue our review process.<br>
 
                 <br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
@@ -280,135 +284,139 @@ message_301 = """\
 
 
 # REQUEST TEMPLATES FOR GEROBUG
-subject_701 = "Request More Information for Report ID ~ID~"
+subject_701 = "Action Required: Additional Info for Report ~ID~"
 message_701 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                With this email, we want to request more information/details<br>
-                for Report ID <b>~ID~</b> (~TITLE~)<br>
+                Hello,<br>
+                Our team requires additional details regarding Report ID <b>~ID~</b> (~TITLE~) to proceed with the validation process.<br>
 
                 <br>
-                Note:<br> 
+                Request Details:<br> 
                 <b>~NOTE~</b>
                 
                 <br><br>
-                You may submit your updated report with subject "<b>UPDATE_~ID~</b>" using this email address<br>
-                Add a <b>Summary</b> of the update in the email body (text only)<br>
-                Do not forget to attach a <b>PDF File</b><br>
+                Please submit the requested information by replying to this email. You must strictly follow this format:<br>
+                1. Set the Email Subject to: "<b>UPDATE_~ID~</b>"<br>
+                2. Include a text-only <b>Summary</b> of the update in the email body.<br>
+                3. Ensure the full detailed report is attached as a <b>PDF File</b>.<br>
                 
-                <br>For more information about email format, you may refer to our guideline page<br>
+                <br>For detailed formatting rules, please refer to our guideline page.<br>
                 
                 <br><br>
-                We look forward to hearing from you<br>
-                Best regards,<br>
-                Gerobug Bounty System
+                We look forward to your response.<br>
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_702 = "Bounty Calculation for Report ID ~ID~"
+subject_702 = "Bounty Decision: Report ~ID~"
 message_702 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                With this email, we want to inform you about Bounty Calculation<br>
-                for Report ID <b>~ID~</b> (~TITLE~)<br>
+                Hello,<br>
+                We have completed the bounty calculation for Report ID <b>~ID~</b> ("~TITLE~").<br>
                 
                 <br>
-                Severity: <b>~SEVERITY~</b><br>
+                Determined Severity: <b>~SEVERITY~</b><br>
 
                 <br>
-                Note:<br> 
+                Assessment Notes:<br> 
                 <b>~NOTE~</b>
                 
                 <br><br>
-                If you <b>Agree</b>, submit an email with subject "<b>AGREE_~ID~</b>" without any text in the body using this email address<br>
-                <br>
-                If you <b>Disagree</b>, submit your complaint with subject "<b>APPEAL_~ID~</b>" using this email address<br>
-                Add a <b>Reason/Explanation</b> of your complaint in the email body (text only)<br>
+                Please review this valuation and choose one of the following actions:<br><br>
 
-                <b>You have a limit of <b>3 times</b> to submit any complaint, otherwise we will consider that you agreed and process the bounty</b>
+                <b>Option 1: Accept the Bounty</b><br>
+                Send an email with the subject "<b>AGREE_~ID~</b>". Leave the email body empty.<br>
+                <br>
+                <b>Option 2: Appeal the Decision</b><br>
+                Send an email with the subject "<b>APPEAL_~ID~</b>". You must include your <b>Reason/Justification</b> in the email body (text only).<br>
+
+                <br>
+                <b>Important:</b> You are limited to a maximum of <b>3 appeals</b>. If this limit is exceeded, the current determination will be considered final and processed accordingly.
                 <br>
                 
-                <br>For more information about email format, you may refer to our guideline page<br>
+                <br>For detailed formatting rules, please refer to our guideline page.<br>
 
                 <br><br>
-                We look forward to hearing from you<br>
-                Best regards,<br>
-                Gerobug Bounty System
+                We look forward to your response.<br>
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_703 = "Bounty Prerequisites for Report ID ~ID~"
+subject_703 = "Action Required: Bounty Prerequisites for Report ~ID~"
 message_703 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                With this email, we want to request information that we need to process bounty<br>
-                for Report ID <b>~ID~</b> (~TITLE~)<br>
+                Hello,<br>
+                We are preparing to process the reward payout for Report ID <b>~ID~</b> ("~TITLE~").<br>
+                Before we can proceed, we require specific documentation and details.<br>
 
                 <br>
-                Note:<br> 
+                Requirements / Instructions:<br> 
                 <b>~NOTE~</b>
                 
                 <br><br>
-                Submit an email with subject "<b>NDA_~ID~</b>" using this email address<br>
-                Add the requested information in the email body (text only)<br>
-                Do not forget to attach the <b>signed NDA</b><br>
+                To complete this step, please reply to this email following these strict guidelines:<br>
+                1. Set the Email Subject to: "<b>NDA_~ID~</b>"<br>
+                2. Provide the requested information in the email body (text only).<br>
+                3. You must attach the <b>signed NDA</b> document.<br>
                 
-                <br>For more information about email format, you may refer to our guideline page<br>
+                <br>For detailed formatting rules, please refer to our guideline page.<br>
 
                 <br><br>
-                We look forward to hearing from you<br>
-                Best regards,<br>
-                Gerobug Bounty System
+                We look forward to receiving your documents.<br>
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_704 = "Thank you for your contribution"
+subject_704 = "Processing Complete: Report ~ID~"
 message_704 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                With this email, we want to inform that your bounty have been processed<br>
+                Hello,<br>
+                Congratulations! We are pleased to confirm that the reward processing for your submission has been completed.<br>
                 <br>
-                Note:<br> 
+                Notes:<br> 
                 <b>~NOTE~</b>
                 
                 <br><br>
-                Thank you for your contribution to our security with Report ID <b>~ID~</b> (~TITLE~)<br>
+                Your Certificate of Appreciation is attached to this email. Additionally, your score has been updated on our Hall of Fame to reflect this achievement.<br>
+                <br>
+                Thank you for your valuable contribution to our security with Report ID <b>~ID~</b> ("~TITLE~").<br>
                 <br> 
-                Stay hungry, Stay hunting!<br>
+                Good luck with your next hunt.<br>
 
                 <br><br>
-                Best regards,<br>
-                Gerobug Bounty System
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
 
-subject_9999 = "Gerobug Password Reset"
+subject_9999 = "Gerobug: Password Reset Request"
 message_9999 = """\
         <html><body>
             <p>
-                Hi there,<br>
-                This is an automated message for you due to your request to reset your password
-                associated with this email account. 
-                <br><br>
+                Hello,<br>
+                We received a request to reset the password associated with this email address.<br><br>
                 
-                <b>To continue, please click the link below to initiate the password reset process:</b><br>
-                <a href="~DOMAIN~:6320/login/reset/~UID~/~TOKEN~/">~DOMAIN~:6320/login/reset/~UID~/~TOKEN~/</a>
+                <b>Please click the link below to set a new password:</b><br>
+                <a href="~DOMAIN~:6320/login/reset/~UID~/~TOKEN~/">Reset Gerobug Account Password</a>
                 <br><br>
 
-                This is a one-time link so it can only be used once!<br>
-                If you didn't make this request, please ignore this email.<br>
+                This is a secure, one-time link. It will expire after use.<br>
+                If you did not request a password reset, you may safely ignore this email.<br>
                 <br><br>
 
-                Best regards,<br>
-                Gerobug Bounty System
+                Best Regards,<br>
+                Gerobug Bug Bounty Platform
             </p>
         </body></html>
         """
