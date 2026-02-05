@@ -117,7 +117,7 @@ def write_mail(code, payload, Destination):
                 smtp_conn.login(EMAIL, PWD)
                 smtp_conn.sendmail(EMAIL, Destination, message.as_string())
                 smtp_conn.close()
-                logging.getLogger("Gerologger").info('Sent Email Successfully')
+                logging.getLogger("Gerologger").info(f"Sent Email Successfully | To: {Destination} | ReportID: {payload[0]} | Template: {code} | Connection: SMTP_SSL")
                 return True
                 
             except Exception as ssl_error:
@@ -127,7 +127,7 @@ def write_mail(code, payload, Destination):
                         server.starttls()
                         server.login(EMAIL, PWD)
                         server.sendmail(EMAIL, Destination, message.as_string())
-                        logging.getLogger("Gerologger").info('Sent Email Successfully')
+                        logging.getLogger("Gerologger").info(f"Sent Email Successfully | To: {Destination} | ReportID: {payload[0]} | Template: {code} | Connection: STARTTLS")
                         return True
                 except Exception as tls_error:
                     raise Exception(f"SSL failed: {ssl_error}, STARTTLS failed: {tls_error}")
