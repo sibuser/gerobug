@@ -9,7 +9,7 @@ echo "
                                                                              
 "
 echo "================================================================================"
-echo "Gerobug v2.6b (Last Update: 04 NOV 2025)"
+echo "Gerobug v2.7 (Last Update: 05 FEB 2026)"
 echo "================================================================================"
 echo ""
 echo "Hello there..."
@@ -408,7 +408,15 @@ case $ACTION in
     echo "REBUILD UPDATES"
     echo "=========================="
     docker compose up --build --force-recreate -d
-    sleep 1
+    sleep 3
+
+    echo -e "\n=========================="
+    echo "UPDATING SAMPLE FILES"
+    echo "=========================="
+    GEROBUG_DASHBOARD=$(docker container ls | grep -E '(_|-){1}dashboard' | awk '{print $1}')
+    GEROBUG_WEB=$(docker container ls | grep -E '(_|-){1}web' | awk '{print $1}')
+    docker cp gerobug_dashboard/static/sample $GEROBUG_DASHBOARD:/src/static/
+    docker cp gerobug_web/static/sample $GEROBUG_WEB:/src/static/
 
     echo -e "\n=============================="
     echo "VIEWING GEROBUG LOG"

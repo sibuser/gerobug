@@ -1,13 +1,88 @@
 import json
 
-bountyterms_template = json.dumps({"delta": "", "html": "<p>By disclosing flaws in our services, security researchers help us keep Gerobug\'s system and data secure, and we thank them for their assistance. Gerobug reserves the right to decide whether to offer monetary rewards for such reports based on risk, impact, and other considerations. You must initially satisfy the following criteria in order to be eligible for a bounty:</p><ul><li>Before submitting any reports, you must read and accept the terms and conditions on the Gerobug Bug Bounty portal (demo.gerobug.com).</li><li>You are not permitted to submit the report by getting in touch with Gerobug staff members personally or by using other methods.</li><li>Report a security flaw to let us know of a service or infrastructure flaw that puts your security or privacy at risk. (Please note that Gerobug has the right to assess if a reported issue or bug poses a security or privacy concern. Not all software bugs are security risks.)</li><li>Make sure you read and understand the \"In Scope\" and \"Out Scope\" of this bug bounty program.</li><li>If you mistakenly cause a privacy violation or disruption (such as accessing account data, service configurations or other personal information) while investigating an problem, you must indicate this in your report.</li><li>Use test accounts while examining issues. You can use a real account if you are unable to recreate an issue with a test account (except for automated testing). Avoid contacting other accounts without permission. In turn, while assessing reports submitted through our bug bounty program, we shall adhere to these standards.</li><li>We look into every valid report and provide a response. But because we receive numerous reports, we prioritize the reviews based on risk and other elements. Maximum 3 (three) Working Days will pass before Gerobug responds to the submitted Bug Bounty Report and issues an initial acknowledgment.</li><li>Gerobug employs a risk-based method analysis together with the OWASP Risk Rating calculator to assess the severity of the problem.</li><li>We determine bounty amounts based on a variety of factors, including (but not limited to) impact, ease of exploitation and quality of the report.</li><li>Although we strive to pay comparable sums for comparable concerns, bounty amounts and qualifying issues may alter over time. Rewards from the past may not always imply rewards of a similar magnitude in the future.</li><li>In the event of duplicate reports, the first researcher to submit a legitimate Bug Bounty Report will get the compensation, at the discretion of Gerobug. (Gerobug is not compelled to disclose the specifics of the Bug Bounty Report; Gerobug reserves the right to assess whether a Bug Bounty Report is a duplicate.) Only one person is compensated for a given bounty.</li><li>Reports may be published at our discretion (and accompanying updates).</li></ul>"})
+bountyterms_template = json.dumps({
+    "delta": "",
+    "html": """
+    <p>Gerobug is committed to the security of our users and services. We value the contributions of the security research community and look forward to working with you to protect our ecosystem. Below are the terms governing our Bug Bounty Program.</p>
+    
+    <b><u>1. Program Eligibility & Rules of Engagement</b></u>
+    <ul>
+        <li><strong>Acceptance of Terms:</strong> Participation is contingent upon full adherence to these terms and the policies listed on the Gerobug Bug Bounty portal.</li>
+        <li><strong>Authorized Channels:</strong> All reports must be submitted exclusively via the official portal. Direct contact with Gerobug staff via personal channels (social media, personal email) regarding bounties is prohibited and may result in disqualification.</li>
+        <li><strong>Testing Authorization:</strong> Research must be conducted solely on accounts you own or have explicit permission to access.</li>
+        <li><strong>Data Protection:</strong> You must not access, modify, exfiltrate, or destroy data belonging to other users. If you inadvertently encounter user data, stop testing immediately and note this in your report.</li>
+        <li><strong>Scope Adherence:</strong> Strict adherence to the "In Scope" and "Out of Scope" assets defined below is required.</li>
+    </ul>
 
-inscope_templates = json.dumps({"delta": "", "html": "<ul><li> *.gerobug.com </li></ul>"})
+    <b><u>2. Rewards & Valuation</b></u>
+    <ul>
+        <li><strong>Risk-Based Assessment:</strong> Gerobug employs a risk-based approach to determine severity, referencing standards such as the OWASP Risk Rating and CVSS. We reserve the sole right to determine if an issue presents a valid security risk.</li>
+        <li><strong>Bounty Discretion:</strong> Reward amounts are determined based on impact, complexity, ease of exploitation, and report quality. Past rewards for similar issues do not guarantee future amounts.</li>
+        <li><strong>Duplicate Reports:</strong> In the case of duplicate submissions, the first valid report received is eligible for the reward. Gerobug determines duplicate status and is not obligated to share details of the original report.</li>
+        <li><strong>Response Service Level:</strong> We aim to acknowledge reports within 3 business days. However, triage prioritization is based on risk severity.</li>
+    </ul>
+    """
+})
 
-outofscope_templates = json.dumps({"delta": "", "html": "<ul><li> 3rd Party Apps (Microsite, Wordpress, CMS, Blog, etc.) </li><li> 3rd Party Plugins </li><li> Attacks which require human interactions (Social Engineering) </li><li> Attacks which require physical access to a certain resource </li><li> Attacks which will take down the infrastructure (DoS / DDoS) </li></ul>"})
+inscope_templates = json.dumps({
+    "delta": "",
+    "html": "<ul><li><strong>*.gerobug.com</strong> (All subdomains)</li></ul>"
+})
 
-RDP_template = json.dumps({"delta": "", "html": "<p>We thank you for your effort and give you permission to share or publish the vulnerabilities you discovered. You can consult the disclosure statement below:</p><ul><li> You give us a fair amount of time to investigate and address a problem you identify before disclosing any details to the public or informing others about the concern.</li><li> You do not interact with an individual account (which includes modifying or accessing data from the account) if the account owner has not consented to such actions.</li><li> You make a good faith attempt to prevent invasions of privacy and inconveniences for other people, including (but not limited to) unauthorized access to or deletion of data and interruption or degraded performance of our services.</li><li> You are required to act in good-faith security research to prevent disruptions and produce minimum to no impact for Gerobug and other Gerobug users.</li><li> You under no circumstances exploit a security flaw you find. (This includes displaying more risk, such as attempting to compromise private company information or looking for additional problems.)</li><li> You do not intentionally violate any other applicable laws or regulations, including (but not limited to) laws and regulations prohibiting the unauthorised access to data.</li><li> You are not permitted to access user data or corporate data for the purposes of this policy, including (but not limited to) personally identifiable information and data belonging to an identified or identifiable natural person, unless it is necessary for vulnerability validation. </li><li> If you want to make the vulnerability you've reported public, please give us enough time to solve it. You can then make it public after getting the go-ahead from the Gerobug team and at least three months after the vulnerability has been fixed.</li><li> Gerobug reserves the right to decide whether submitted reports are allowed to be published to the public or not.</li><li> Reports having a \"critical\" severity level cannot be published by researchers alone. </li></ul>"})
+outofscope_templates = json.dumps({
+    "delta": "",
+    "html": """
+    <ul>
+        <li>Third-party applications, plugins, or microsites (e.g., WordPress, hosted blogs, external CMS).</li>
+        <li>Social Engineering (e.g., phishing, vishing, smishing).</li>
+        <li>Physical security attacks or facility access.</li>
+        <li>Denial of Service (DoS/DDoS) or resource exhaustion attacks.</li>
+        <li>Self-XSS without a valid vector to affect other users.</li>
+        <li>Automated scanning traffic without a specific, validated proof of concept.</li>
+    </ul>
+    """
+})
 
-reportguidelines_templates = json.dumps({"delta": "", "html": "<ul><li>For security bug report, please submit your finding through email, including proof of concept that contains: step by steps, screenshoot and the remediation. Don't forget to attach proof of concept video (by link) to reproduce the vulnerabilty.</li><li>Researchers must alert Gerobug on their report if there were any privacy breaches or disruptions, such as illegal access to other users' data, service setups, or other sensitive information, that unintentionally occurred while uncovering vulnerabilities.</li></ul>"})
+RDP_template = json.dumps({
+    "delta": "",
+    "html": """
+    <b><u>Safe Harbor & Disclosure Policy</b></u>
+    <p>We consider security research conducted in accordance with this policy to be "authorized." We will not pursue legal action against researchers who adhere to these guidelines:</p>
+    <ul>
+        <li><strong>Good Faith Research:</strong> You agree to act in good faith to avoid privacy violations, destruction of data, and interruption or degradation of our services.</li>
+        <li><strong>Confidentiality:</strong> You must not exploit a security flaw beyond the minimal steps necessary to prove its existence. Accessing or exfiltrating PII (Personally Identifiable Information) is strictly prohibited.</li>
+        <li><strong>Embargo Period:</strong> You agree to withhold public disclosure until Gerobug has verified and remediated the issue.</li>
+        <li><strong>Public Disclosure:</strong> You may publish your findings only after receiving explicit written approval from the Gerobug team. Typically, this is allowed <strong>90 days after remediation</strong>, though critical severity issues may require a longer embargo to ensure user safety.</li>
+        <li><strong>Compliance:</strong> You must not violate applicable laws or regulations, including those regarding unauthorized data access.</li>
+    </ul>
+    """
+})
 
-faq_templates = json.dumps({"delta": "", "html": "<p><strong>Q: What if I found a vulnerability, but I don't know how to exploit it?</strong></p><p>A: We expect that vulnerability reports sent to us have a valid attack scenario to qualify for a reward, and we consider it as a critical step when doing vulnerability research. Reward amounts are decided based on the maximum impact of the vulnerability, and the panel is willing to reconsider a reward amount, based on new information (such as a chain of bugs, or a revised attack scenario).</p><p><strong>Q: Who determines whether my report is eligible for a reward?</strong></p><p>A: The reward panel consists of the members of the Gerobug Security Team.</p><p><strong>Q: When will reward be paid?</strong></p><p>A: You will be paid after the vulnerabilty has been fixed by our engineer. Please wait for maximum 90 days.</p><p><strong>Q: When will reward be paid?</strong></p><p>A: We encourage you to review our Responsible Disclosure Policy. In essence, we promise to get back to you quickly and address errors in a reasonable amount of time; in return, we ask for a fair amount of notice. Reports that violate this rule are typically disqualified, and the award is revoked. Additionally, if it contains sensitive information, it doesn't eliminate the prospect of legal action under applicable laws.</p>"})
+reportguidelines_templates = json.dumps({
+    "delta": "",
+    "html": """
+    <ul>
+        <li><strong>Proof of Concept (PoC):</strong> Reports must include clear, reproducible steps. We prefer text-based steps or scripts (e.g., HTTP requests, curl commands) over video/screenshots alone. If a video is necessary for complex reproduction, please include it via a private link.</li>
+        <li><strong>Impact Analysis:</strong> Clearly articulate the security impact. Describe the specific scenario: Who is the victim? What can the attacker gain?</li>
+        <li><strong>Remediation:</strong> Including suggested fixes or mitigation steps is highly appreciated and demonstrates a deeper understanding of the issue.</li>
+        <li><strong>Incident Reporting:</strong> If you unintentionally access sensitive data or disrupt a service during testing, you must cease testing immediately and disclose this incident within the report.</li>
+    </ul>
+    """
+})
+
+faq_templates = json.dumps({
+    "delta": "",
+    "html": """
+    <p><strong>Q: I found a vulnerability, but I can't exploit it. Is it eligible?</strong></p>
+    <p>A: We generally require a valid attack scenario to qualify for a reward. Theoretical vulnerabilities without a proven impact are typically ineligible. However, if you provide new information (such as chaining multiple minor bugs to achieve a critical impact), the panel is happy to re-evaluate the submission.</p>
+    
+    <p><strong>Q: Who determines eligibility and bounty amounts?</strong></p>
+    <p>A: The Gerobug Security Team serves as the final decision-making panel for all rewards, severity assessments, and eligibility criteria.</p>
+    
+    <p><strong>Q: When will the bounty be paid?</strong></p>
+    <p>A: Bounties are processed after the vulnerability has been validated and remediated. Please allow up to 90 days for the payment process to complete.</p>
+    
+    <p><strong>Q: Can I publicly disclose my findings?</strong></p>
+    <p>A: We support transparency but require strict adherence to our Safe Harbor & Disclosure Policy. You must allow us reasonable time to remediate the issue before any public release. Reports published without prior authorization or before the embargo period ends will be disqualified, and the researcher may be barred from future participation.</p>
+    """
+})
