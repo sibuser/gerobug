@@ -217,9 +217,15 @@ def ReportUpdateStatus(request,id):
             messages.success(request,"Report Status is updated!")
 
             def trigger_geromailer(report):
-                payload = [report.report_id, report.report_title, report.report_status, "", report.report_severity]
-                destination = report.hunter_email
-                geromailer.notify(destination, payload) #TRIGGER GEROMAILER TO SEND UPDATE NOTIFICATION
+                from django.db import connection as db_connection
+                try:
+                    payload = [report.report_id, report.report_title, report.report_status, "", report.report_severity]
+                    destination = report.hunter_email
+                    geromailer.notify(destination, payload) #TRIGGER GEROMAILER TO SEND UPDATE NOTIFICATION
+                except Exception as e:
+                    logging.getLogger("Gerologger").error(f"Thread failed to send notification for {report.report_id}: {e}")
+                finally:
+                    db_connection.close()
 
             trigger = threading.Thread(target=trigger_geromailer, args=(report,))
             trigger.start()
@@ -306,10 +312,16 @@ def InvalidHandler(request, id):
                         
                     logging.getLogger("Gerologger").info("REPORT "+str(id)+" MARKED AS INVALID BY "+str(request.user.username))
                         
-                    def trigger_geromailer(report):
-                        payload = [report.report_id, report.report_title, report.report_status, reasons, report.report_severity]
-                        destination = report.hunter_email
-                        geromailer.notify(destination, payload) # TRIGGER GEROMAILER TO SEND UPDATE NOTIFICATION
+                    def trigger_geromailer(report, reasons=reasons):
+                        from django.db import connection as db_connection
+                        try:
+                            payload = [report.report_id, report.report_title, report.report_status, reasons, report.report_severity]
+                            destination = report.hunter_email
+                            geromailer.notify(destination, payload) # TRIGGER GEROMAILER TO SEND UPDATE NOTIFICATION
+                        except Exception as e:
+                            logging.getLogger("Gerologger").error(f"Thread failed to send notification for {report.report_id}: {e}")
+                        finally:
+                            db_connection.close()
                         
                     # SEND NOTIFICATION AND REASON WITH THREADING
                     trigger = threading.Thread(target=trigger_geromailer, args=(report,))
