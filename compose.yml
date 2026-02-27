@@ -13,7 +13,7 @@ services:
       - traefik
     labels:
       traefik.enable: "true"
-      traefik.http.routers.gerobug-web.rule: "Host(`${GEROBUG_DOMAIN}`)"
+      traefik.http.routers.gerobug-web.rule: "Host(`gerobug.${DOMAIN_NAME}`)"
       traefik.http.routers.gerobug-web.entrypoints: "https"
       traefik.http.routers.gerobug-web.tls.certresolver: "letsencrypt"
       traefik.http.services.gerobug-web.loadbalancer.server.port: "8000"
@@ -27,7 +27,7 @@ services:
     environment:
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
       DJANGO_SUPERUSER_PASSWORD: "${DJANGO_SUPERUSER_PASSWORD}"
-      GEROBUG_HOST: "${GEROBUG_HOST}"
+      GEROBUG_HOST: "gerobug.${DOMAIN_NAME},gerobug-dashboard.${DOMAIN_NAME}"
       PYTHONUNBUFFERED: 1
     volumes:
       - ./log/:/src/log
@@ -41,7 +41,7 @@ services:
       - traefik
     labels:
       traefik.enable: "true"
-      traefik.http.routers.gerobug-dashboard.rule: "Host(`${DASHBOARD_DOMAIN}`)"
+      traefik.http.routers.gerobug-dashboard.rule: "Host(`gerobug-dashboard.${DOMAIN_NAME}`)"
       traefik.http.routers.gerobug-dashboard.entrypoints: "https"
       traefik.http.routers.gerobug-dashboard.tls.certresolver: "letsencrypt"
       traefik.http.services.gerobug-dashboard.loadbalancer.server.port: "8001"
