@@ -4,3 +4,4 @@ django-quill-editor
 django==5.2.11
 gunicorn==23.0.0
 psycopg2
+whitenoise

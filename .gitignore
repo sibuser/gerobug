@@ -10,7 +10,6 @@
 */*/*migrations*
 
 secrets/
-.env
 clear_caches*
 flush_migrate*
 .envrc

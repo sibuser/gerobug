@@ -12,3 +12,4 @@ libmagic
 psycopg2
 python-magic
 requests
+whitenoise

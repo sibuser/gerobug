@@ -1,57 +1,50 @@
 services:
-  nginx:
-    build: ./nginx
-    ports:
-      - "80:80"
-      - "443:443"
-      - "6320:6320"
-    volumes:
-      - static-content:/src/static
-      - /etc/letsencrypt:/etc/letsencrypt
-      - /var/lib/letsencrypt:/var/lib/letsencrypt
-      - /var/www/letsencrypt:/var/www/letsencrypt
+  web:
+    build: ./gerobug_web
+    command: gunicorn gerobug_web.wsgi:application --bind 0.0.0.0:8000 --timeout 300
+    environment:
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      PYTHONUNBUFFERED: 1
     restart: unless-stopped
     depends_on:
-      - web
+      - dashboard
+    networks:
+      - default
+      - traefik
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.gerobug-web.rule: "Host(`${GEROBUG_DOMAIN}`)"
+      traefik.http.routers.gerobug-web.entrypoints: "https"
+      traefik.http.routers.gerobug-web.tls.certresolver: "letsencrypt"
+      traefik.http.services.gerobug-web.loadbalancer.server.port: "8000"
     logging:
       options:
         max-size: 50m
 
-  web:
-    build: ./gerobug_web
-    expose:
-      - 8000
-    command: gunicorn gerobug_web.wsgi:application --bind 0.0.0.0:8000 --timeout 300
-    env_file:
-      - .env
-    environment:
-      PYTHONUNBUFFERED: 1
-    volumes:
-      - static-content:/src/static
-    restart: unless-stopped
-    depends_on:
-      - dashboard
-
   dashboard:
     build: ./gerobug_dashboard
-    # ports:
-    #  - "6320:6320"
-    # command: python manage.py runserver 0.0.0.0:6320 --insecure
-    expose:
-      - 8001
     command: gunicorn gerobug.wsgi --bind 0.0.0.0:8001 --timeout 300
-    env_file:
-      - .env
     environment:
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      DJANGO_SUPERUSER_PASSWORD: "${DJANGO_SUPERUSER_PASSWORD}"
+      GEROBUG_HOST: "${GEROBUG_HOST}"
       PYTHONUNBUFFERED: 1
     volumes:
-      - static-content:/src/static
       - ./log/:/src/log
       - ./migrations/prerequisites/:/src/prerequisites/migrations/
       - ./migrations/dashboards/:/src/dashboards/migrations/
     restart: unless-stopped
     depends_on:
       - db
+    networks:
+      - default
+      - traefik
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.gerobug-dashboard.rule: "Host(`${DASHBOARD_DOMAIN}`)"
+      traefik.http.routers.gerobug-dashboard.entrypoints: "https"
+      traefik.http.routers.gerobug-dashboard.tls.certresolver: "letsencrypt"
+      traefik.http.services.gerobug-dashboard.loadbalancer.server.port: "8001"
     logging:
       options:
         max-size: 50m
@@ -60,9 +53,8 @@ services:
     image: "postgres:17-alpine"
     expose:
       - 5432
-    env_file:
-      - .env
     environment:
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
       POSTGRES_DB: "gerobug_db"
       POSTGRES_USER: "gerobug"
     volumes:
@@ -72,6 +64,6 @@ services:
       options:
         max-size: 50m
 
-volumes:
-  static-content:
-  static-files:
+networks:
+  traefik:
+    external: true
