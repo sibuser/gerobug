@@ -27,11 +27,7 @@ fi
 # Creating Superuser
 echo "[LOG] Creating Superuser "geromin""
 python manage.py createsuperuser --noinput --username "geromin" --email "geromin@localhost"
-echo '[LOG] "geromin" Password --> gerobug_dashboard/secrets/gerobug_secret.env'
-
-# Collecting static files
-echo "[LOG] Collecting static files"
-python manage.py collectstatic --noinput --verbosity 1 | grep -v "It will be ignored"
+echo '[LOG] "geromin" Password --> DJANGO_SUPERUSER_PASSWORD env var'
 
 echo "[LOG] GEROBUG-DASHBOARD is fully configured successfully."
 
