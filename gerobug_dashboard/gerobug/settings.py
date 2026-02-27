@@ -5,17 +5,12 @@ import os
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-root_path = str(BASE_DIR).replace("gerobug_dashboard",'')
-
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', get_random_secret_key())
 DEBUG = False
 
-# READ FROM GEROBUG HOST FILE
-f = open(root_path+"/gerobug_host", "r")
-gerobug_host = f.readlines()
-gerobug_host = [ host.rstrip("\n") for host in gerobug_host ]   
-f.close()
+# READ GEROBUG HOST FROM ENV (comma-separated for multiple hosts)
+gerobug_host = [h.strip() for h in os.getenv('GEROBUG_HOST', 'localhost').split(',') if h.strip()]
 
 CSRF_TRUSTED_ORIGINS = []
 for host in gerobug_host:

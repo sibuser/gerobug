@@ -23,7 +23,7 @@ services:
       - 8000
     command: gunicorn gerobug_web.wsgi:application --bind 0.0.0.0:8000 --timeout 300
     env_file:
-      - ./gerobug_dashboard/secrets/db_secret.env
+      - .env
     environment:
       PYTHONUNBUFFERED: 1
     volumes:
@@ -41,8 +41,7 @@ services:
       - 8001
     command: gunicorn gerobug.wsgi --bind 0.0.0.0:8001 --timeout 300
     env_file:
-      - ./gerobug_dashboard/secrets/gerobug_secret.env
-      - ./gerobug_dashboard/secrets/db_secret.env
+      - .env
     environment:
       PYTHONUNBUFFERED: 1
     volumes:
@@ -61,15 +60,13 @@ services:
     image: 'postgres:17-alpine'
     expose:
       - 5432
-    command: postgres -c hba_file=/opt/gerobug_hba.conf
     env_file:
-      - ./gerobug_dashboard/secrets/db_secret.env
+      - .env
     environment:
       POSTGRES_DB: "gerobug_db"
       POSTGRES_USER: "gerobug"
     volumes:
       - ./db_data/:/var/lib/postgresql/data/
-      - ./gerobug_hba.conf:/opt/gerobug_hba.conf
     restart: unless-stopped
     logging:
       options:
