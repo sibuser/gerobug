@@ -128,12 +128,12 @@ class DashboardsConfig(AppConfig):
                 if not Personalization.objects.filter(personalize_id=1).exists():
                     THEME = Personalization()
                     THEME.personalize_id    = 1
-                    THEME.main_1            = "#171717"
-                    THEME.main_2            = "#E8596A"
-                    THEME.secondary_1       = "#C82A3D"
-                    THEME.secondary_2       = "#FA8997"
-                    THEME.secondary_3       = "#FFE0E0"
-                    THEME.button_1          = "#48409E"
+                    THEME.main_1            = "#0F0F14"
+                    THEME.main_2            = "#7C3AED"
+                    THEME.secondary_1       = "#7C3AED"
+                    THEME.secondary_2       = "#A78BFA"
+                    THEME.secondary_3       = "#EDE9FE"
+                    THEME.button_1          = "#7C3AED"
                     THEME.company_name      = "GEROBUG"
                     THEME.save()
 
