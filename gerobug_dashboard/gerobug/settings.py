@@ -14,8 +14,8 @@ gerobug_host = [h.strip() for h in os.getenv('GEROBUG_HOST', 'localhost').split(
 
 CSRF_TRUSTED_ORIGINS = []
 for host in gerobug_host:
-    CSRF_TRUSTED_ORIGINS.append("https://" + str(host) + ":6320")
-    CSRF_TRUSTED_ORIGINS.append("http://" + str(host) + ":6320")
+    CSRF_TRUSTED_ORIGINS.append("https://" + str(host))
+    CSRF_TRUSTED_ORIGINS.append("http://" + str(host))
 
 ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost', gerobug_host] #INTERNAL IP
