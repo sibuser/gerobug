@@ -10,7 +10,6 @@ class DashboardsConfig(AppConfig):
         def ready(self):
             import gerocert.gerocert, dashboards.rulestemplate
             import logging
-            from logging.handlers import TimedRotatingFileHandler
             from geromail.thread import RunGeromailThread
             from dashboards.models import BugReport, BugHunter, ReportStatus, StaticRules, BlacklistRule, CertificateData, Personalization
             from django.contrib.auth.models import Group, Permission
@@ -20,7 +19,7 @@ class DashboardsConfig(AppConfig):
             # GEROLOGGER INITIATION
             def gerologger_config():
                 gerologger = logging.getLogger("Gerologger")
-                log_handler = TimedRotatingFileHandler('log/gerobug.log', when='midnight', backupCount=31)
+                log_handler = logging.StreamHandler(sys.stdout)
                 log_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)-8s %(message)s', datefmt='%Y-%m-%d %H:%M:%S'))
                 gerologger.setLevel(logging.DEBUG)
                 gerologger.addHandler(log_handler)

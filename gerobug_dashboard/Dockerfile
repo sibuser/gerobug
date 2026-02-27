@@ -10,7 +10,7 @@ COPY . /src/
 
 WORKDIR /src
 
-RUN mkdir -p /src/log
+
 
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
