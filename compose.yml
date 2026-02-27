@@ -57,7 +57,7 @@ services:
         max-size: 50m
 
   db:
-    image: 'postgres:17-alpine'
+    image: "postgres:17-alpine"
     expose:
       - 5432
     env_file:
@@ -71,7 +71,7 @@ services:
     logging:
       options:
         max-size: 50m
-        
+
 volumes:
   static-content:
   static-files:
