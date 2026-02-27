@@ -29,10 +29,6 @@ services:
       DJANGO_SUPERUSER_PASSWORD: "${DJANGO_SUPERUSER_PASSWORD}"
       GEROBUG_HOST: "gerobug.${DOMAIN_NAME},gerobug-dashboard.${DOMAIN_NAME}"
       PYTHONUNBUFFERED: 1
-    volumes:
-      - ./log/:/src/log
-      - ./migrations/prerequisites/:/src/prerequisites/migrations/
-      - ./migrations/dashboards/:/src/dashboards/migrations/
     restart: unless-stopped
     depends_on:
       - db
@@ -58,7 +54,7 @@ services:
       POSTGRES_DB: "gerobug_db"
       POSTGRES_USER: "gerobug"
     volumes:
-      - ./db_data/:/var/lib/postgresql/data/
+      - ${APPS_FOLDER}/gerobug/db_data/:/var/lib/postgresql/data/
     restart: unless-stopped
     logging:
       options:
